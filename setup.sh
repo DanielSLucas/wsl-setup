@@ -7,8 +7,8 @@
 source ./scripts/utils.sh
 
 # Add your data
-echo_info "Add your data:"
-nano ./scripts/user.sh
+# echo_info "Add your data:"
+# nano ./scripts/user.sh
 source ./scripts/user.sh
 
 # Install applications
@@ -27,7 +27,7 @@ fi
 
 # Create a directory for projects and development
 echo_info "Creating Developer directory in Home directory..."
-mkdir ${HOME}/Developer ${HOME}/Developer
+mkdir ${HOME}/Dev ${HOME}/Dev
 
 # Cleanup cached downloads and remove the installation zip and folder
 echo_info "Removing unnecessary files..."

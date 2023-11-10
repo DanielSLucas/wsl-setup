@@ -22,12 +22,13 @@ NPM_CONFIG_PREFIX=~/.npm-global
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  asdf
+  ssh-agent  
   colored-man-pages
   extract
   F-Sy-H
   zsh-autosuggestions
   zsh-completions
+  zsh-nvm
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -37,7 +38,7 @@ source $ZSH/oh-my-zsh.sh
 alias copyssh="cat < ~/.ssh/id_ed25519.pub | clip.exe | echo '=> Public SSH key copied.'"
 
 # Open developer directory
-alias dev="${HOME}/Developer"
+alias dev="${HOME}/Dev"
 
 # Open Explorer in current folder
 alias explorer="explorer.exe ."
@@ -59,3 +60,11 @@ alias winhome="/mnt/c/Users/$(echo $USER)"
 
 # Open .zshrc in VSCode
 alias zshcfg="code ~/.zshrc"
+
+# -------------- XSERVER CONFIG --------------
+
+# set DISPLAY variable to the IP automatically assigned to WSL2
+#export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2; exit;}'):0.0
+
+# dbus start
+#sudo /etc/init.d/dbus start &> /dev/null

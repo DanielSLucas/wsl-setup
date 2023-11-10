@@ -24,9 +24,8 @@ sudo apt install -y apt-transport-https ca-certificates curl gawk ssh-askpass tr
 sudo add-apt-repository -y ppa:git-core/ppa
 sudo apt update && sudo apt install -y git
 
-# Nodejs
-curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
-sudo apt install -y nodejs yarn
+# NVM
+sudo curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
 
 # Finish
 echo_success "Finished applications installation."

@@ -19,8 +19,8 @@ git clone https://github.com/zsh-users/zsh-completions ~/.oh-my-zsh/custom/plugi
 # Install plugin F-Sy-H
 git clone https://github.com/z-shell/F-Sy-H.git ~/.oh-my-zsh/custom/plugins/F-Sy-H
 
-# Install asdf
-git clone https://github.com/asdf-vm/asdf.git ~/.asdf
+# Install plugin zsh-nvm
+git clone https://github.com/lukechilds/zsh-nvm ~/.oh-my-zsh/custom/plugins/zsh-nvm
 
 # Move permanent files to Home directory
 replace "./scripts/.zshrc" ".zshrc"
@@ -34,7 +34,7 @@ fpath=(/usr/local/share/zsh-completions $fpath)
 # Git configs
 git config --global user.name "$GIT_NAME"
 git config --global user.email "$GIT_EMAIL"
-git config --global init.defaultBranch main
+git config --global init.defaultBranch master
 git config --global --add oh-my-zsh.hide-dirty 1
 git config --global --add oh-my-zsh.hide-status 1
 
