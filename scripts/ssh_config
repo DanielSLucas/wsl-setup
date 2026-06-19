@@ -1,0 +1,17 @@
+Host github.com
+  HostName github.com
+  User git
+  IdentityFile ~/.ssh/id_ed25519
+  IdentitiesOnly yes
+
+Host github-lftm
+  HostName github.com
+  User git
+  IdentityFile ~/.ssh/id_ed25519_lftm
+  IdentitiesOnly yes
+
+Host github-lftmtech
+  HostName github.com
+  User git
+  IdentityFile ~/.ssh/id_ed25519_lftmtech
+  IdentitiesOnly yes

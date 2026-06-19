@@ -12,17 +12,13 @@ export ZSH=$HOME/.oh-my-zsh
 # Support 256 colors path
 export TERM="xterm-256color"
 
-# npm ENV
-# Fix EACCES permissions errors when installing packages globally
-NPM_CONFIG_PREFIX=~/.npm-global
-
 # --------------------------- Plugins ----------------------------------
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  ssh-agent  
+  ssh-agent
   colored-man-pages
   extract
   F-Sy-H
@@ -30,6 +26,9 @@ plugins=(
   zsh-completions
   zsh-nvm
 )
+
+# ssh-agent: load the personal and professional identities
+zstyle :omz:plugins:ssh-agent identities id_ed25519 id_ed25519_lftm id_ed25519_lftmtech
 
 source $ZSH/oh-my-zsh.sh
 
@@ -60,6 +59,27 @@ alias winhome="/mnt/c/Users/$(echo $USER)"
 
 # Open .zshrc in VSCode
 alias zshcfg="code ~/.zshrc"
+
+# -------------- ZSH_HISTORY CONFIG --------------
+setopt APPEND_HISTORY
+setopt SHARE_HISTORY
+setopt HIST_IGNORE_ALL_DUPS
+
+# -------------- NVM CONFIG --------------
+# NVM is loaded by the zsh-nvm plugin (declared in plugins above).
+# Do NOT source nvm again here to avoid duplicate loading.
+
+# -------------- PYENV CONFIG --------------
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init - zsh)"
+
+# -------------- .NET ---------------
+export DOTNET_ROOT="$HOME/.dotnet"
+export PATH="$PATH:$DOTNET_ROOT:$DOTNET_ROOT/tools"
+
+# -------------- LOCAL BIN --------------
+export PATH="$HOME/.local/bin:$PATH"
 
 # -------------- XSERVER CONFIG --------------
 

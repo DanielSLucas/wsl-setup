@@ -8,14 +8,18 @@ _Check linked files to more details._
 
 ### Installation files
 
-- [apps.sh](scripts/apps.sh) - installs applications.
-- [dotfiles.sh](scripts/dotfiles.sh) - installs _Oh My Zsh_, _.zshrc_ and _Git_ configs.
-- [npm.sh](scripts/npm.sh) - _Node.js_ and _npm_ settings.
+- [apps.sh](scripts/apps.sh) - installs applications (includes `git`, `NVM`, `ripgrep`).
+- [dotfiles.sh](scripts/dotfiles.sh) - installs _Oh My Zsh_, _.zshrc_ and _Git_ configs (personal + LFTM profiles).
+- [npm.sh](scripts/npm.sh) - installs _Node.js_ LTS via _NVM_ and sets it as the default.
+- [python.sh](scripts/python.sh) - installs _pyenv_, _Python 3.11.9_ (global) and _uv_ via pip.
+- [dotnet.sh](scripts/dotnet.sh) - installs the _.NET SDK_ into `~/.dotnet` and the `dotnet-ef` global tool.
 - [setup.sh](setup.sh) - main installer.
-- [ssh.sh](scripts/ssh.sh) - generate _SSH_.
+- [ssh.sh](scripts/ssh.sh) - installs the _SSH_ config and generates the personal key.
+- [ssh_config](scripts/ssh_config) - _SSH_ host config (personal + professional GitHub hosts).
 - [user.sh](scripts/user.sh) - user data to configuration of _Git_ and _SSH_.
 - [utils.sh](scripts/utils.sh) - support functions for other installers.
-- [.zshrc](.zshrc) - terminal configs with aliases, paths, plugins and theme (this file is permanent after installation).
+- [.zshrc](scripts/.zshrc) - terminal configs with aliases, paths, plugins and theme (this file is permanent after installation).
+- [.gitconfig-lftm](scripts/.gitconfig-lftm) - professional Git identity included automatically for LFTM remotes.
 
 ## Prerequisites
 
@@ -41,11 +45,34 @@ After restarting, launch `Ubuntu.exe` from the _Start Menu_. You’ll be asked t
 If you already have `Windows` and `WSL` installed, run these commands in `WSL`:
 
 ```
-git clone https://github.com/samuelramox/wsl-setup.git
+git clone https://github.com/DanielSLucas/wsl-setup.git
 chmod 700 wsl-setup/ -R
 cd wsl-setup
 ./setup.sh
 ```
+
+## What gets installed
+
+- **Applications** — Ubuntu WSL utils, build-essential, common CLI tools, `git`, `ripgrep` and `NVM`.
+- **Node.js** — installed via `NVM` (latest LTS, set as the default). `NVM` is loaded in Zsh by the `zsh-nvm` plugin.
+- **Python** — `pyenv` with `Python 3.11.9` set as global; `pip` is upgraded and `uv==0.11.7` is installed via pip into that Python.
+- **.NET** — SDK `10.0.300` installed into `~/.dotnet` (pinned, non-interactive via `dotnet-install.sh`), with `DOTNET_ROOT`/`PATH` exported and the `dotnet-ef` `10.0.8` global tool.
+
+## Git & SSH profiles
+
+Two GitHub identities are configured:
+
+- **Personal** (default) — `Daniel Lucas Santos` / `daniellucas-pms@hotmail.com`, using `~/.ssh/id_ed25519` on the `github.com` host.
+- **Professional (LFTM)** — `Daniel Santos` / `daniel.santos@lftm.com.br`, applied automatically (via `includeIf hasconfig:remote.*.url`) for repos whose remote uses the `github-lftm` or `github-lftmtech` SSH hosts.
+
+The SSH config defines three hosts (`github.com`, `github-lftm`, `github-lftmtech`), all pointing to `HostName github.com` with `IdentitiesOnly yes`. Clone professional repos with, e.g.:
+
+```
+git clone git@github-lftm:org/repo.git
+git clone git@github-lftmtech:org/repo.git
+```
+
+> **Note:** `ssh.sh` only generates the **personal** key (`id_ed25519`) when missing. The professional keys (`id_ed25519_lftm`, `id_ed25519_lftmtech`) are **not** created or copied by this repo — provide them manually under `~/.ssh/` with `600` permissions.
 
 ## Remote - WSL
 

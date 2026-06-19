@@ -20,12 +20,15 @@ sudo apt install -y build-essential
 # Common packages
 sudo apt install -y apt-transport-https ca-certificates curl gawk ssh-askpass tree unzip wget zsh
 
+# ripgrep
+sudo apt install -y ripgrep
+
 # Git
 sudo add-apt-repository -y ppa:git-core/ppa
 sudo apt update && sudo apt install -y git
 
 # NVM
-sudo curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
 
 # Finish
 echo_success "Finished applications installation."

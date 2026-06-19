@@ -20,14 +20,20 @@ bash ./scripts/dotfiles.sh
 # Node.js and npm settings
 bash ./scripts/npm.sh
 
-# Generate SSH key
+# Python (pyenv + uv)
+bash ./scripts/python.sh
+
+# .NET SDK + tools
+bash ./scripts/dotnet.sh
+
+# SSH configuration and key
 if [[ $SSH_EMAIL ]]; then
   bash ./scripts/ssh.sh
 fi
 
 # Create a directory for projects and development
 echo_info "Creating Developer directory in Home directory..."
-mkdir ${HOME}/Dev ${HOME}/Dev
+mkdir -p "${HOME}/Dev"
 
 # Cleanup cached downloads and remove the installation zip and folder
 echo_info "Removing unnecessary files..."
